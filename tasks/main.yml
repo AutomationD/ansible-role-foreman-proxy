@@ -1,9 +1,14 @@
 ---
 # tasks file for kostyrevaa.foreman-proxy
 
-- include: install.yml
+- include: install-rhel.yml
+  when: ansible_system == "Linux" and ansible_distribution == "RedHat"
+  tags:
+    - foreman-proxy
+
+- include: install-ubuntu.yml
+  when: ansible_system == "Linux" and ansible_distribution == "Ubuntu"
   tags:
     - foreman-proxy
 
 - include: config.yml
-

@@ -5,6 +5,5 @@
 
 - name: install foreman rubygem-apipie-bindings package
   yum: name=rubygem-apipie-bindings state=present
-  when: foreman_proxy_register  
-
+  when: foreman_proxy_register
 

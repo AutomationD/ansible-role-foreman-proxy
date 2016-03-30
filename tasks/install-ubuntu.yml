@@ -1,0 +1,20 @@
+---
+
+- name: add Foreman deb repo
+  apt_repository:
+    repo: deb http://deb.theforeman.org/ trusty stable
+    state: present
+
+- name: add Foreman deb repo key
+  apt_key:
+    url: http://deb.theforeman.org/foreman.asc
+    state: present
+
+- name: install Foreman Proxy package & dependancies
+  apt:
+    name: "{{ item }}"
+    state: installed
+    update_cache: yes
+
+  with_items:
+    - foreman-proxy

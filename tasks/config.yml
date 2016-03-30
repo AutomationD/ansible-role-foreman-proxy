@@ -43,3 +43,10 @@
   firewalld: port="{{foreman_proxy_http_port}}/tcp" permanent=true state=enabled immediate=yes
   tags:
     - foreman-proxy
+  when: ansible_system == "Linux" and ansible_distribution == "RedHat"
+
+- name: allow to connect to foreman-proxy port
+  ufw: rule=allow port={{foreman_proxy_http_port}} proto=tcp
+  tags:
+    - foreman-proxy
+  when: ansible_system == "Linux" and ansible_distribution == "Ubuntu"

@@ -21,7 +21,6 @@
     - restart foreman-proxy
   with_fileglob:
     - ../templates/settings/*.j2
-  when: "{{ 'foreman_proxy_' + item | basename | regex_replace('.yml.j2','') }} is defined"
   tags:
     - foreman-proxy
     - foreman-proxy-settings

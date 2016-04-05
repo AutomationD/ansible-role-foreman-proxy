@@ -1,0 +1,8 @@
+# This file is managed by Ansible
+---
+{% if foreman_proxy_dns is defined and foreman_proxy_dns_provider == "nsupdate" %}
+:dns_key: {{ foreman_proxy_keyfile }}
+:dns_server: {{ foreman_proxy_dns_server }}
+{% else %}
+# Use Ansible to enable nsupdate
+{% endif %}

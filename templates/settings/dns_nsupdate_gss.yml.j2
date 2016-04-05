@@ -1,0 +1,9 @@
+# This file is managed by Ansible
+---
+{% if foreman_proxy_dns is defined and foreman_proxy_dns_provider == 'nsupdate_gss' %}
+:dns_tsig_keytab: {{ foreman_proxy_dns_tsig_keytab }}
+:dns_tsig_principal: {{ foreman_proxy_dns_tsig_principal }}
+:dns_server: {{ foreman_proxy_dns_server }}
+{% else %}
+# Use Ansible to enable nsupdate_gss
+{% endif %}
